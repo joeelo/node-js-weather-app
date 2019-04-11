@@ -1,16 +1,19 @@
 const path = require("path");
 const express = require("express");
+const hbs = require("hbs");
 
 const app = express();
 const port = 3000;
 
 // Define paths for Express Config
 const publicDirectoryPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../templates")
+const viewsPath = path.join(__dirname, "../templates/views");
+const partialsPath = path.join(__dirname, "../templates/partials");
 
 // Setup handlebars locations and view setup
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
+hbs.registerPartials(partialsPath);
 
 // Setup Static Directory to serve
 app.use(express.static(publicDirectoryPath));
@@ -24,13 +27,15 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", {
-    title: "About Page"
+    title: "About Page",
+    author: "Joe Lorenzo"
   })
 })
 
 app.get("/help", (req, res) => {
   res.render("help", {
     title: "Help Page",
+    author: "Joe Lorenzo",
     helpMessage: "Please click below for our FAQ"
   })
 })
@@ -42,6 +47,21 @@ app.get("/weather", (req, res) => {
   });
 });
 
+app.get("/help/*", (req, res) => {
+  res.render("404", {
+    title: 404,
+    author: "Joe Lorenzo",
+    errorMessage: "Help article not found!"
+  })
+})
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    title: 404,
+    author: "Joe Lorenzo",
+    errorMessage: "Can't find page!"
+  })
+})
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 

@@ -1,8 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+
+body {
+  color: #333333;
+  padding: 0;
+  margin: 0;
+  font-family: 'Crimson Text', serif;
+  max-width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  min-height: 89vh;
+  flex-direction: column;
+  width: 60vw;
+  background-color: coral;
+  margin: 0 auto;
+  padding-left: 10vw;
+}
+
 h1 {
   color: cornflowerblue;
 }
 
-#profile-photo {
+nav {
+  background-color: cornflowerblue;
+  display: flex;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  right: 25vw;
+}
+
+nav a {
+  font-size: 1.2em; 
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+  transition: text-decoration 1s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+
+}
+
+.portrait {
   width: 28%;
   border-radius: 5px;
+}
+
+#footer {
+  width: 100vw;
+  border-top: 1px solid black;
+  text-align: center;
+  color: rgb(128, 128, 128);
+  font-size: 1.2em;
 }
