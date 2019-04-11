@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const geoCode = require("./utils/geocode");
+const forecast = require("./utils/forecast")
 
 const app = express();
 const port = 3000;
@@ -41,11 +43,44 @@ app.get("/help", (req, res) => {
 })
 
 app.get("/weather", (req, res) => {
-  res.send({
-    forecast: "Decently Sunny",
-    location: "New York"
+  if (!req.query.address) {
+    return res.send({
+      error: "You Must Provide a Search Query"
+    })
+  }
+  geoCode(req.query.address, (error, data = {}) => {
+      const { long, lat, location } = data
+      const coordinates = {latitude: lat, longitude: long};
+      if (error) {
+        return res.send({ error });
+      }
+      forecast(coordinates, (error, forecastData) => {
+        return res.send({
+          forecast: forecastData.summary,
+          location: location,
+          address: req.query.address
+        })
+      })
   });
+
+  // res.send({
+  //   forecast: forecastData.temp,
+  //   location: "New York",
+  //   address: req.query.address
+  // });
 });
+
+app.get("/products", (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: "You must Provide a Search Query"
+    })
+  }
+
+  res.send({
+    products: []
+  })
+})
 
 app.get("/help/*", (req, res) => {
   res.render("404", {
