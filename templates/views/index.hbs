@@ -14,14 +14,14 @@
   <div class="container">
 
     {{>header}}
-    
-    <p> Created by {{author}}</p>
 
-    <form action="submit">
+    <form action="submit" class="search-form">
       <label for="location">Location: </label> <br>
-      <input type="text" name="location" placeholder="Zip or City"> <br>
+      <input type="text" name="location" placeholder="Zip or City" class="city-field"> 
       <button type="submit"> Submit </button>
     </form>
+
+    <div class="fetch-div"></div>
     
   </div>
   

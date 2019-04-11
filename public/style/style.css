@@ -12,7 +12,7 @@ body {
 
 .container {
   display: flex;
-  min-height: 89vh;
+  min-height: 93vh;
   flex-direction: column;
   width: 60vw;
   background-color: coral;
@@ -20,8 +20,12 @@ body {
   padding-left: 10vw;
 }
 
+.fetch-div {
+  padding-right: 15%;
+}
+
 h1 {
-  color: cornflowerblue;
+  color: rgb(27, 90, 207);
 }
 
 nav {
@@ -55,7 +59,26 @@ nav a:hover {
 #footer {
   width: 100vw;
   border-top: 1px solid black;
-  text-align: center;
   color: rgb(128, 128, 128);
-  font-size: 1.2em;
+  font-size: .8em;
+}
+
+footer h4 {
+  margin-left: 5%;
+}
+
+input {
+  padding: 3px;
+  border: 1px solid #cccccc;
+  font-size: 1.1em;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px;
+  top: 1px;
+  font-size: .9em;
+  border-radius: 2px;
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, .5)
 }
