@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchForm = document.querySelector(".search-form")
   
   const fetchData = (location) => {
-    fetch(`http://localhost:3000/weather?address=${location}`)
+    fetch(`/weather?address=${location}`)
     .then(res => res.json())
     .then(data => { 
       if (data.error) {
