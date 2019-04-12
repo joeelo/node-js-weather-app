@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mainDiv.innerHTML = `
       <h1> ${data.location} </h1>
       <h2> ${data.forecast} </h2>
+      <h2> The high of today will be ${data.tempHigh} with a low of ${data.tempLow}
       <p> It is currently ${data.temp} degrees</p>
       <p> There is a ${data.precip}% chance of rain</p>
     `

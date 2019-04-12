@@ -55,13 +55,16 @@ app.get("/weather", (req, res) => {
         return res.send({ error });
       }
       forecast(coordinates, (error, forecastData) => {
+        const {temp, precipitation, summary, tempHigh, tempLow} = forecastData
         console.log(forecastData)
         return res.send({
-          temp: forecastData.temp,
-          precip: forecastData.precipitation,
-          forecast: forecastData.summary,
-          location: location,
-          address: req.query.address
+          temp: temp,
+          precip: precipitation,
+          forecast: summary,
+          location: data.location,
+          tempHigh: tempHigh,
+          tempLow: tempLow,
+          address: req.query.address,
         })
       })
   });
