@@ -23,12 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
     `
   }
 
+  
   const searchHandler = () => {
     event.preventDefault();
     const location = document.querySelector(".city-field");
     fetchData(location.value);
   }
-
+  
   searchForm.addEventListener("submit", searchHandler)
-
+  
 })
+
+// const weatherUtilities = (dataObj = {}) => {
+//   const { temp, precip } = dataObj
+//   if (temp > 45 && precip < 20) {
+//     return "Seems like A light jacket Kinda day"
+//   } else if (temp < 40 && precip > 40 ) {
+//     return "It's gonna be pretty brisk with a chance of snow make sure to bring an umbrella"
+//   }
+// };
